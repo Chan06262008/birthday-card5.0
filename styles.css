@@ -1,0 +1,137 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f1e9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    padding: 20px;
+}
+
+.envelope {
+    position: relative;
+    width: 320px;
+    height: 220px;
+    cursor: pointer;
+    transition: all 0.8s ease;
+}
+
+.envelope-flap {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-top: 110px solid #e74c3c;
+    transform-origin: top;
+    z-index: 3;
+    transition: all 0.8s ease;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.envelope-body {
+    position: absolute;
+    width: 320px;
+    height: 220px;
+    background-color: #c0392b;
+    z-index: 2;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.card {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    background: linear-gradient(135deg, #fff9f9, #ffffff);
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transform: translateY(120px);
+    transition: all 0.8s ease;
+    z-index: 1;
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.message {
+    color: #2c3e50;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.flowers-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.flower {
+    width: 40px;
+    height: 40px;
+    background-color: #f39c12;
+    border-radius: 50%;
+    position: relative;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.6s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flower::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 40px;
+    background-color: #27ae60;
+    top: 40px;
+    left: 14px;
+    border-radius: 5px;
+}
+
+.flower-center {
+    width: 15px;
+    height: 15px;
+    background-color: #e74c3c;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.open .card {
+    transform: translateY(0);
+}
+
+.envelope.open .message {
+    opacity: 1;
+}
+
+.envelope.open .flower {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Flower animation delays */
+.flower:nth-child(1) { transition-delay: 0.3s; }
+.flower:nth-child(2) { transition-delay: 0.5s; }
+.flower:nth-child(3) { transition-delay: 0.7s; }
+.flower:nth-child(4) { transition-delay: 0.9s; }
